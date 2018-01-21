@@ -5,7 +5,7 @@ if [ $? -eq 1 ]; then
    exit 1
 fi
 PAYLOAD_LINE=`awk '/^__18462__/ {print NR + 1; exit 0; }' $0`
-tail -n+$PAYLOAD_LINE $0 | opwnssl enc -aes-256-cbc -d -base64 -salt | tar -xz
+tail -n+$PAYLOAD_LINE $0 | openssl enc -aes-256-cbc -d -base64 -salt | tar -xz
 #you can add custom installation command here
 ./run.sh
 exit 0
